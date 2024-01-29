@@ -1,0 +1,93 @@
+
+<div class = "container-fluid">
+  <form [formGroup] = "LoginForm" (ngSubmit)="OnSubmit()">
+  <div class="form-group p-4 m-4">
+  <div class="page-header">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-6">
+          <span style="color:rgb(226, 43, 223) ;text-align:center"><h1>Contact Our</h1></span>
+          <span style="text-align:center"><h1>Customer Support Center</h1></span>
+        </div>
+        <div class="col-6">
+          <img src="file:///E:/Full Stack/Angular Assignment/Assignment13/laptop.jpg" class="img-fluid ;max-width:100% ;height:auto">
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    <span style="text-align:center">
+      <h5>Contact Information</h5>
+      <p>Please fill out your contact information below.</p>
+    </span>
+      <div class="form-group p-4 m-4">
+        <label>Name*</label>
+  
+        <div class="col-12">
+          <div class="row">
+            <div class="col-3">
+              <input [class.is-invalid] = "LoginForm.get('fname')?.invalid" type="text" class="form-control" formControlName="fname">
+              <small> First Name</small><br>
+              <small [class.d-none]="LoginForm.get('fname')?.valid || LoginForm.get('fname')?.untouched"class="text-danger">Firstname is required and alphabets only</small>
+            </div>
+            <div class="col-3">
+              <input type="text" class="form-control" formControlName="lname">
+              <small> Last Name</small>
+            </div>
+          </div>
+        </div>
+        <div class="form-group p-2 m-2">  
+          <label>Email*</label>
+            <div class="row">
+              <input [class.is-invalid] = "LoginForm.get('Email')?.invalid" type="text" class="form-control" formControlName="Email">
+              <small [class.d-none]="LoginForm.get('Email')?.valid || LoginForm.get('Email')?.untouched"class="text-danger">Enter valid email</small>
+
+            </div>
+        </div>
+        <div class="form-group p-2 m-2">
+          <label>Phone*</label>
+            <div class="row">
+              <input [class.is-invalid] = "LoginForm.get('Phone')?.invalid" type="text" class="form-control" formControlName="Phone">
+              <small [class.d-none]="LoginForm.get('Phone')?.valid || LoginForm.get('Phone')?.untouched"class="text-danger">Enter Valid Phone number only</small>
+            </div>
+        </div>
+        <div class="row">
+        <div class="form-group p-2 m-2">
+          <label>City*</label>
+          <div class="col-3">
+              <input [class.is-invalid] = "LoginForm.get('City')?.invalid" type="text" class="form-control" formControlName="City">
+              <small [class.d-none]="LoginForm.get('City')?.valid || LoginForm.get('City')?.untouched"class="text-danger">Minimum 4 alphabets required</small>
+          </div>
+        </div>
+        <div class="form-group p-2 m-2">
+          <label>State*</label>
+          <div class="col-3">
+            <select  class="form-control" formControlname="State">
+              
+              <option *ngFor="let value of State" >
+                  {{value}}
+              </option>           
+             </select>
+
+
+          </div>
+        </div>
+        <div class="form-group p-2 m-2">
+          <label>Zipcode*</label>
+          <div class="col-3">
+              <input [class.is-invalid] = "LoginForm.get('Zipcode')?.invalid" type="text" class="form-control" formControlName="Zipcode">
+              <small [class.d-none]="LoginForm.get('Zipcode')?.valid || LoginForm.get('Zipcode')?.untouched"class="text-danger">Valid Zipcode required</small>
+          </div>
+        </div>
+        </div>
+      </div>
+
+    </div>
+    <button type="submit"  [disabled]="!LoginForm.valid">Submit Button</button>
+
+  </form>
+  {{LoginForm.value | json}}
+
+</div>
+  <router-outlet></router-outlet>
+  
